@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Taking Website</title>
+    <style>
+        body{
+            background-color: coral;
+        }
+        h1{
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;;
+            -webkit-text-stroke: 1px #000;
+            text-shadow: 5px 5px #000;
+        }
+        .note{
+            display: flex;
+            /* align-items: center; */
+            justify-content: space-around;
+        }
+        .take-inp{
+            width: 20vw;
+            height: 50vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+        input{
+            width: 100%;
+            height:5vh;
+            font-size: 1rem;
+            font-family: monospace;
+            outline: none;
+            border: none;
+        }
+        input::placeholder{
+            font-size: 2rem;
+            text-align: left;
+            align-items: center;
+        }
+        input:focus{
+            border: 1px solid #000;
+        }
+        textarea{
+            width: 100%;
+            height:80% ;
+            outline: none;
+            border: none;
+        }
+        .note .notes{
+            width: 50vw;
+            height: 80vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 0px 50px;
+        }
+        .w{
+            width: 100%;
+            height: 10vh;
+            overflow: hidden;
+            font-size: 1rem;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background-color: #fff;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes App Using Django Username:{{user}}</h1>
+    <div class="note">
+    <form action="" method='POST' class="take-inp">
+    {% csrf_token %}
+        <input placeholder="Note's Title" type="text" name="title" class="title">
+        <textarea id="" cols="50" name="desc" placeholder="Type Your Note Here" rows="80"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="notes">
+    {% for note in notes %}
+        <a style="text-decoration: none;color: #000;" href="{% url 'note' note.id %}">
+        <div class="w">
+            <p style="font-size: 2rem;">{{note.title}}</p>
+        </div>
+        </a>
+
+        {% endfor %}
+    </div>
+    </div>
+</body>
+</html>

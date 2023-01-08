@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background-color: coral;
+            overflow-x:hidden;
+            {% comment %} overflow-y:scroll; {% endcomment %}
+        }
+        h1{
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-shadow: 5px 5px #000;
+            margin-left:20rem;
+        }
+        p{
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+            color: #fff;
+            padding: 0px 10px;
+            font-family: cursive;
+            text-shadow: 1px 1px rgb(41, 39, 39);
+        }
+        .f{
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            width:100vw;
+        }
+        a{
+            padding:10px 10px;
+            background-color:#fff;
+            text-decoration:none;
+            font-family:monospace;
+            color:#000;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<div class="f">
+    <h1>{{note.title}} </h1>
+    <a href="{% url 'update' id %}">
+        update
+    </a>
+    <a href="{% url 'delete' id %}">
+        Delete
+    </a>
+    </div>
+    <p>{{note.desc}}</p>
+    
+</body>
+</html>
